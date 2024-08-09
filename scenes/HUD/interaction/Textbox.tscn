@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://yhrvy5uecvw5"]
+
+[ext_resource type="Script" path="res://scripts/hud/Textbox.gd" id="1_0b6bb"]
+[ext_resource type="FontFile" uid="uid://xi878lcndodx" path="res://fonts/EightBitDragon-anqx.ttf" id="1_hhxyi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsoqy"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_g032v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y1b2l"]
+font = ExtResource("1_hhxyi")
+font_size = 40
+
+[node name="TextBox" type="CanvasLayer"]
+script = ExtResource("1_0b6bb")
+text = "Hello, World!"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -175.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tsoqy")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_g032v")
+
+[node name="Start" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "*"
+label_settings = SubResource("LabelSettings_y1b2l")
+
+[node name="Text" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Hello, World! Hello, World! Hello, World! Hello, World! Hello, World! Hello, World! Hello, World! Hello, World! Hello, World! Hello, World! Hello, World! Hello, World! Hello, World! Hello, World! "
+label_settings = SubResource("LabelSettings_y1b2l")
+autowrap_mode = 1
+
+[node name="End" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_vertical = 8
+text = "*"
+label_settings = SubResource("LabelSettings_y1b2l")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

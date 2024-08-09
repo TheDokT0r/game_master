@@ -13,7 +13,6 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-
 func animation_handler():
 		if Input.is_action_pressed("MOVE_RIGHT"):
 			_animated_sprite.flip_h = false

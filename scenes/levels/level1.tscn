@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://wg73x27k8an7"]
+[gd_scene load_steps=4 format=3 uid="uid://wg73x27k8an7"]
 
 [ext_resource type="PackedScene" uid="uid://ckdcpqrx5enf2" path="res://scenes/characters/player.tscn" id="1_q7n7i"]
 [ext_resource type="PackedScene" uid="uid://emmnijguguh2" path="res://scenes/objects/chest.tscn" id="2_064ai"]
+[ext_resource type="PackedScene" uid="uid://yhrvy5uecvw5" path="res://scenes/HUD/interaction/Textbox.tscn" id="3_ppy4s"]
 
 [node name="Level1" type="Node2D"]
 
@@ -10,3 +11,6 @@ position = Vector2(7, 10)
 
 [node name="StaticBody2D" parent="." instance=ExtResource("2_064ai")]
 position = Vector2(48, 8)
+
+[node name="TextBox" parent="." instance=ExtResource("3_ppy4s")]
+wait_time = 0.05
