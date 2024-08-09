@@ -43,4 +43,4 @@ sprite_frames = SubResource("SpriteFrames_hcd1t")
 animation = &"standing"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(10, 10)
+zoom = Vector2(8, 8)
