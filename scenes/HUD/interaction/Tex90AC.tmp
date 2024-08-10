@@ -19,6 +19,7 @@ font_size = 40
 
 [node name="TextBox" type="CanvasLayer"]
 script = ExtResource("1_0b6bb")
+text = "Hello, World!"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 12

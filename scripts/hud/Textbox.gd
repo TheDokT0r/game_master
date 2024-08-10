@@ -10,6 +10,7 @@ extends CanvasLayer
 
 @onready var _text_label := $MarginContainer/MarginContainer/HBoxContainer/Text
 @onready var dialog_player := $AudioStreamPlayer2D
+@onready var reading_dialog = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,16 +21,23 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+
+func _input(event):
+	if reading_dialog and Input.is_action_just_pressed("SKIP_INTERACTION"):
+		wait_time = 0
 
 func display_text_process():
 	_text_label.text = ""
+	reading_dialog = true
 	for char in text:
 		await wait(wait_time)
 		_text_label.text += char
 		
 		if char != "":
 			dialog_player.play(0)
-
+	reading_dialog = false
+	
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
 
