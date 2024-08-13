@@ -13,11 +13,11 @@ signal _on_text_changes
 @export_category("Text Player Attributess")
 @export var default_wait_time = 0.05
 @export_file("*.ogg") var _dialog_audio_file = "res://sounds/dialog/sample1.ogg"
+@export var reading_dialog = false
 
 
 @onready var _text_label := $MarginContainer/MarginContainer/HBoxContainer/Text
 @onready var dialog_player := $AudioStreamPlayer2D
-@onready var reading_dialog = false
 @onready var wait_time = default_wait_time
 
 

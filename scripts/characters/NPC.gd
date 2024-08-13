@@ -24,14 +24,8 @@ func _input(event):
 	interact_with_player()
 	
 func interact_with_player():
-	if Input.is_action_just_pressed("INTERACT") and is_interactable_with_player:
-		if Global.is_player_in_interaction == false:
-			Global.is_player_in_interaction = true
-			_dialog_index = 0
-			textbox.text = _dialog[_dialog_index]
-			add_child(textbox)
-			
-		else:
+	if Input.is_action_just_pressed("INTERACT") and is_interactable_with_player and not textbox.reading_dialog:
+		if Global.is_player_in_interaction:
 			_dialog_index = _dialog_index + 1
 			if _dialog_index >= _dialog.size():
 				Global.is_player_in_interaction = false
@@ -39,6 +33,14 @@ func interact_with_player():
 				return
 			
 			textbox.text = _dialog[_dialog_index]
+			
+		else:
+			Global.is_player_in_interaction = true
+			_dialog_index = 0
+			textbox.text = _dialog[_dialog_index]
+			add_child(textbox)
+			
+			
 				
 func _on_body_entered(body):
 	if body is Player:
