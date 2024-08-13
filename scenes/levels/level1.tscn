@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ckdcpqrx5enf2" path="res://scenes/characters/player.tscn" id="1_q7n7i"]
 [ext_resource type="PackedScene" uid="uid://emmnijguguh2" path="res://scenes/objects/chest.tscn" id="2_064ai"]
-[ext_resource type="PackedScene" uid="uid://yhrvy5uecvw5" path="res://scenes/HUD/interaction/Textbox.tscn" id="3_ppy4s"]
+[ext_resource type="PackedScene" uid="uid://bl61oi6wga77q" path="res://scenes/characters/NPC.tscn" id="3_hgeil"]
 
 [node name="Level1" type="Node2D"]
 
@@ -12,5 +12,6 @@ position = Vector2(7, 10)
 [node name="StaticBody2D" parent="." instance=ExtResource("2_064ai")]
 position = Vector2(48, 8)
 
-[node name="TextBox" parent="." instance=ExtResource("3_ppy4s")]
-wait_time = 0.05
+[node name="Niv" parent="." instance=ExtResource("3_hgeil")]
+position = Vector2(-26, 4)
+_dialog = Array[String](["Hello there, my name is niv!"])

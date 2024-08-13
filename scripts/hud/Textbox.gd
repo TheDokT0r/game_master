@@ -4,7 +4,7 @@ extends CanvasLayer
 @export_multiline var text = "placeholder"
 
 @export_category("Text Player Attributess")
-@export var wait_time = 1.0
+@export var wait_time = 0.05
 @export_file("*.ogg") var _dialog_audio_file = "res://sounds/dialog/sample1.ogg"
 
 
@@ -15,6 +15,7 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#await get_tree().physics_frame
 	set_dialog_audio_file()
 	display_text_process()
 
@@ -43,3 +44,9 @@ func wait(seconds: float) -> void:
 
 func set_dialog_audio_file():
 	dialog_player.stream = ResourceLoader.load(_dialog_audio_file)
+	
+func display_textbox():
+	self.visible = true
+	
+func hide_textbox():
+	self.visible = false
