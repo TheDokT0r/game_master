@@ -8,33 +8,41 @@ class_name NPC extends Area2D
 @export_multiline var _dialog: Array[String]
 
 @onready var _interaction_area := $InteractionArea
-@onready var dialog_index = 0
 @onready var is_interactable_with_player = false
+@onready var _dialog_index = 0
+@onready var textbox = preload("res://scenes/HUD/interaction/Textbox.tscn").instantiate()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	textbox._dialog_audio_file = _dialog_voice
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 func _input(event):
-	if Input.is_action_just_pressed("INTERACT") and is_interactable_with_player:
-		interact_with_player()
+	interact_with_player()
 	
 func interact_with_player():
-	var textbox = preload("res://scenes/HUD/interaction/Textbox.tscn").instantiate()
-	textbox._dialog_audio_file = _dialog_voice
-	textbox.text = _dialog[dialog_index]
-	add_child(textbox)
-
-
-
+	if Input.is_action_just_pressed("INTERACT") and is_interactable_with_player:
+		if Global.is_player_in_interaction == false:
+			Global.is_player_in_interaction = true
+			_dialog_index = 0
+			textbox.text = _dialog[_dialog_index]
+			add_child(textbox)
+			
+		else:
+			_dialog_index = _dialog_index + 1
+			if _dialog_index >= _dialog.size():
+				Global.is_player_in_interaction = false
+				textbox.queue_free()
+				return
+			
+			textbox.text = _dialog[_dialog_index]
+				
 func _on_body_entered(body):
 	if body is Player:
 		is_interactable_with_player = true
-
 
 func _on_body_exited(body):
 	if body is Player:

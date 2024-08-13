@@ -8,12 +8,19 @@ func _process(delta):
 	animation_handler()
 
 func _physics_process(delta):
+	if Global.is_player_in_interaction:
+		return
+	
 	var input_direction = Input.get_vector("MOVE_LEFT", "MOVE_RIGHT", "MOVE_UP", "MOVE_DOWN")
 	velocity = input_direction * SPEED
 
 	move_and_slide()
 
 func animation_handler():
+		if Global.is_player_in_interaction:
+			_animated_sprite.stop()
+			return
+	
 		if Input.is_action_pressed("MOVE_RIGHT"):
 			_animated_sprite.flip_h = false
 		elif Input.is_action_pressed("MOVE_LEFT"):

@@ -14,4 +14,4 @@ position = Vector2(48, 8)
 
 [node name="Niv" parent="." instance=ExtResource("3_hgeil")]
 position = Vector2(-26, 4)
-_dialog = Array[String](["Hello there, my name is niv!"])
+_dialog = Array[String](["Hello there, my name is niv!", "And what's your name?"])
