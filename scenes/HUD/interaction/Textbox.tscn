@@ -71,7 +71,12 @@ autowrap_mode = 1
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
 size_flags_vertical = 8
-text = "*"
+text = "V"
 label_settings = SubResource("LabelSettings_y1b2l")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="SymbolTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="SymbolTimer" to="." method="_on_symbol_timer_timeout"]

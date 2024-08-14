@@ -1,4 +1,4 @@
-extends StaticBody2D
+class_name Chest extends StaticBody2D
 
 @onready var _sprite = $Sprite2D
 

@@ -60,11 +60,13 @@ func animation_handler():
 		else:
 			_animated_sprite.stop()
 
-func _on_area_entered(area):
-	if area is NPC:
-		interatables_in_zone.append(area)
+func _on_interaction_area_body_entered(body):
+	if body is NPC:
+		interatables_in_zone.append(body)
 
-func _on_area_exited(area):
-	if area is NPC:
-		var index = interatables_in_zone.find(area)
-		interatables_in_zone.remove_at(index)
+
+
+func _on_interaction_area_body_exited(body):
+		if body is NPC:
+			var index = interatables_in_zone.find(body)
+			interatables_in_zone.remove_at(index)

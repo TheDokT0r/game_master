@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b86oqcsn31ssp"]
+
+[ext_resource type="Script" path="res://scripts/characters/NPC.gd" id="1_4281i"]
+[ext_resource type="Texture2D" uid="uid://dku54m771mg02" path="res://sprites/NPCs/backneck/backneck.png" id="2_pfk0r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dvtl0"]
+height = 32.8
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uh5ix"]
+
+[node name="Backneck" type="Area2D"]
+script = ExtResource("1_4281i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pfk0r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 2)
+shape = SubResource("CapsuleShape2D_dvtl0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-2, 2)
+shape = SubResource("CapsuleShape2D_uh5ix")

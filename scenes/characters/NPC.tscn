@@ -1,31 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl61oi6wga77q"]
+[gd_scene load_steps=4 format=3 uid="uid://bl61oi6wga77q"]
 
 [ext_resource type="Script" path="res://scripts/characters/NPC.gd" id="1_ykch4"]
 [ext_resource type="Texture2D" uid="uid://c6lglhe3640jf" path="res://sprites/NPCs/niv/niv.png" id="2_bn2ng"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q2wou"]
-radius = 15.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wenj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_41v10"]
 size = Vector2(19, 25)
 
-[node name="Npc" type="Area2D"]
+[node name="Npc" type="CharacterBody2D"]
 script = ExtResource("1_ykch4")
 
-[node name="InteractionArea" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_q2wou")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-mass = 0.01
-gravity_scale = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(0.5, 3.5)
-shape = SubResource("RectangleShape2D_8wenj")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_bn2ng")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 3.5)
+shape = SubResource("RectangleShape2D_41v10")

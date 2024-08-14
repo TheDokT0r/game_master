@@ -16,8 +16,10 @@ signal _on_text_changes
 @export var reading_dialog = false
 
 
-@onready var _text_label := $MarginContainer/MarginContainer/HBoxContainer/Text
+@onready var text_label := $MarginContainer/MarginContainer/HBoxContainer/Text
+@onready var end_label := $MarginContainer/MarginContainer/HBoxContainer/End
 @onready var dialog_player := $AudioStreamPlayer2D
+@onready var symbol_timer := $SymbolTimer
 @onready var wait_time = default_wait_time
 
 
@@ -35,7 +37,7 @@ func _process(delta):
 
 func _on_text_changes_signal_func():
 	wait_time = default_wait_time
-	_text_label.text = ""
+	text_label.text = ""
 	display_text_process()
 
 func _input(event):
@@ -43,17 +45,15 @@ func _input(event):
 		wait_time = 0
 
 func display_text_process():
-	_text_label.text = ""
+	text_label.text = ""
 	reading_dialog = true
 	for char in text:
 		await Global.wait(wait_time)
-		_text_label.text += char
+		text_label.text += char
 		
 		if char != "":
 			dialog_player.play(0)
 	reading_dialog = false
-	
-
 
 func set_dialog_audio_file():
 	dialog_player.stream = ResourceLoader.load(_dialog_audio_file)
@@ -63,3 +63,9 @@ func display_textbox():
 	
 func hide_textbox():
 	self.visible = false
+
+func _on_symbol_timer_timeout():
+	if end_label.text == "V":
+		end_label.text = "v"
+	else:
+		end_label.text = "V"
