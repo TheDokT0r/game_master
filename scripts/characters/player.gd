@@ -8,7 +8,13 @@ class_name Player extends CharacterBody2D
 
 const SPEED = 50
 
+func _ready():
+	pass
+
 func _input(event):
+	if textbox.reading_dialog:
+		return
+	
 	if Input.is_action_just_pressed("INTERACT") and interatables_in_zone.size() > 0:
 		var npc = interatables_in_zone[0]
 		
@@ -16,7 +22,7 @@ func _input(event):
 			npc._dialog_index = npc._dialog_index + 1
 			if npc._dialog_index >= npc._dialog.size():
 				is_in_interaction = false
-				textbox.queue_free()
+				remove_child(textbox)
 				return
 		
 			textbox.text = npc._dialog[npc._dialog_index]
